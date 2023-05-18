@@ -101,6 +101,7 @@ namespace Agenda.Entities
             string sql = $"SELECT codcontato as 'Código', nome as 'Nome', telefone as 'Telefone', celular as 'Celular', email as 'Email' from tbcontato where codcontato = {cod};";
             /*Executa o comando SQL e guarda a informação na váriavel*/
             MySqlCommand cmd = new MySqlCommand(sql, conect.conexao);
+            /*Conecta no banco de Dados*/
             conect.Conectar();
 
             /*Transforma o select já executado para Dados*/
@@ -109,56 +110,109 @@ namespace Agenda.Entities
             DataTable tabela = new DataTable();
             /*Adapter preenche a tabla*/
             adapter.Fill(tabela);
+            /*Deconecta do BD*/
             conect.Desconectar();
+            /*retorna a tabela*/
             return tabela;        
         }
         public DataTable ConsultaNome(string value)
         {
+            /*Cria uma string com comandos SQL*/
             string sql = $"SELECT codcontato as 'Código', nome as 'Nome', telefone as 'Telefone', celular as 'Celular', email as 'Email' from tbcontato where nome like '%{value}%';";
+            /*Executa o comando SQL e guarda a informação na váriavel*/
             MySqlCommand cmd = new MySqlCommand(sql ,conect.conexao);
-            DataTable table = new DataTable();
+            /*Conecta no banco de Dados*/
+            conect.Conectar();
+            
+            /*Cria uma tabela de dados*/
+            DataTable table = new DataTable();            
+            /*Transforma o select já executado para Dados*/
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            /*Adapter preenche a tabla*/
             adapter.Fill(table);
+            /*Deconecta do BD*/
+            conect.Desconectar();
+            /*retorna a tabela*/
             return table;
         }
         public DataTable ConsultaTelefone(string value)
         {
+            /*Cria uma string com comandos SQL*/
             string sql = $"SELECT codcontato as 'Código', nome as 'Nome', telefone as 'Telefone', celular as 'Celular', email as 'Email' from tbcontato where telefone like '%{value}%' ;";
+            /*Executa o comando SQL e guarda a informação na váriavel*/
             MySqlCommand cmd = new MySqlCommand(sql, conect.conexao);
+            /*Conecta no banco de Dados*/
             conect.Conectar();
+
+            /*Transforma o select já executado para Dados*/
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            /*Cria uma tabela de dados*/
             DataTable table = new DataTable();
+            /*Adapter preenche a tabla*/
             adapter.Fill(table);
+            /*Deconecta do BD*/
+            conect.Desconectar();
+            /*retorna a tabela*/
             return table;
         }
         public DataTable ConsultaCelular(string value)
         {
+            /*Cria uma string com comandos SQL*/
             string sql = $"SELECT codContato as 'Código', nome as 'Nome', telefone as 'Telefone', celular as 'Celular', email as 'Email' from tbcontato where celular like '%{value}%' ;";
+            /*Executa o comando SQL e guarda a informação na váriavel*/
             MySqlCommand cmd = new MySqlCommand (sql ,conect.conexao);
+            /*Conecta no banco de Dados*/
             conect.Conectar();
+
+            /*Transforma o select já executado para Dados*/
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            /*Cria uma tabela de dados*/
             DataTable table = new DataTable();
+            /*Adapter preenche a tabla*/
             adapter.Fill(table);
+            /*Deconecta do BD*/
+            conect.Desconectar();
+            /*retorna a tabela*/
             return table;
         }
         public DataTable ConsultaEmail(string value)
             {
+            /*Cria uma string com comandos SQL*/
             string sql = $"SELECT codContato as 'Código', nome as 'Nome', telefone as 'Telefone', celular as 'Celular', email as 'Email' from tbcontato where email like '%{value}%' ;";
+            /*Executa o comando SQL e guarda a informação na váriavel*/
             MySqlCommand cmd = new MySqlCommand(sql, conect.conexao);
+            /*Conecta no banco de Dados*/
             conect.Conectar();
+
+            /*Transforma o select já executado para Dados*/
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            /*Cria uma tabela de dados*/
             DataTable table = new DataTable();
+            /*Adapter preenche a tabla*/
             adapter.Fill(table);
+            /*Deconecta do BD*/
+            conect.Desconectar();
+            /*retorna a tabela*/
             return table;
             }
         public DataTable ListarTodos()
             {
-            string sql = $"SELECT codContato as 'Código', nome as 'Nome', telefone as 'Telefone', celular as 'Celular', email as 'Email' from tbcontato';";
+            /*Cria uma string com comandos SQL*/
+            string sql = $"SELECT codContato as 'Código', nome as 'Nome', telefone as 'Telefone', celular as 'Celular', email as 'Email' from tbcontato;";
+            /*Executa o comando SQL e guarda a informação na váriavel*/
             MySqlCommand cmd = new MySqlCommand(sql, conect.conexao);
+            /*Conecta no banco de Dados*/
             conect.Conectar();
+
+            /*Transforma o select já executado para Dados*/
             MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+            /*Cria uma tabela de dados*/
             DataTable table = new DataTable();
+            /*Adapter preenche a tabla*/
             adapter.Fill(table);
+            /*Deconecta do BD*/
+            conect.Desconectar();
+            /*retorna a tabela*/
             return table;
             }
         }

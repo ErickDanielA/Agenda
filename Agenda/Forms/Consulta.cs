@@ -24,24 +24,24 @@ namespace Agenda.Forms
         {
             if (cb.SelectedIndex == 0)
                 {
-                consulta.ConsultaCodigo(int.Parse(txbDado.Text));
+                dataGridView1.DataSource=consulta.ConsultaCodigo(int.Parse(txbDado.Text));
                 }
             else if(cb.SelectedIndex == 1)
                 {
-                consulta.ConsultaNome(txbDado.Text);
+                dataGridView1.DataSource = consulta.ConsultaNome(txbDado.Text);
                 }
             else if (cb.SelectedIndex == 2)
                 {
-                consulta.ConsultaTelefone(txbDado.Text);
+                dataGridView1.DataSource = consulta.ConsultaTelefone(txbDado.Text);
                 }
             else if (cb.SelectedIndex == 3)
                 {
-                consulta.ConsultaCelular(txbDado.Text);
+                dataGridView1.DataSource=consulta.ConsultaCelular(txbDado.Text);
                 }
             else if (cb.SelectedIndex == 4)
                 {
                 try {
-                    consulta.ConsultaEmail(txbDado.Text); 
+                    dataGridView1.DataSource=consulta.ConsultaEmail(txbDado.Text); 
                     }
                 catch(Exception erro) 
                     {
@@ -56,7 +56,7 @@ namespace Agenda.Forms
 
         private void button2_Click(object sender, EventArgs e)
             {
-            consulta.ListarTodos();
+            dataGridView1.DataSource = consulta.ListarTodos();
             }
         }
 }
