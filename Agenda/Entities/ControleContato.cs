@@ -6,6 +6,7 @@ using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+
 namespace Agenda.Entities
 {
     class ControleContato
@@ -215,5 +216,41 @@ namespace Agenda.Entities
             /*retorna a tabela*/
             return table;
             }
+        public string Backup(string Caminho)
+        {
+            string dataAtual = DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss");
+            string CaminhoBackup = Caminho + "\\backupContatos_" + dataAtual + ".sql";
+
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(CaminhoBackup, conect.conexao);
+                MySqlBackup mb = new MySqlBackup(cmd);
+                conect.Conectar();
+                mb.ExportToFile(CaminhoBackup);
+                conect.Desconectar();
+                return ("Backup  do banco de dados realizado com sucesso!");
+            }
+            catch (MySqlException e)
+            {
+                return (e.ToString());
+            }
         }
+        public string Restore(string Caminho)
+        {
+            try 
+            {
+                MySqlCommand cmd = new MySqlCommand(Caminho, conect.conexao);
+                MySqlBackup mb = new MySqlBackup(cmd);
+                conect.Conectar();
+                mb.ImportFromFile(Caminho);
+                conect.Desconectar();
+                return "Banco de Dados restaurado com sucesso";
+            }
+            catch(MySqlException e)
+            {
+                return "Banco de Dados NÂO RESTAURADO!!!"+"Erro: "+ e;
+            }
+        }
+
+    }
 }

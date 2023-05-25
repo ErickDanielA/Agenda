@@ -9,7 +9,7 @@ namespace Agenda.Entities
 {
     class Conexao
     {
-        public MySqlConnection conexao = new MySqlConnection(@"server = localhost;Port=3306;Database=agenda;User=root;Pwd=;");
+        public MySqlConnection conexao = new MySqlConnection(@"server = localhost;Port=3307;Database=agenda;User=root;Pwd=root;");
 
         public void Conectar()
         {
